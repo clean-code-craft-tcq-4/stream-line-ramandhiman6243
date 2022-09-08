@@ -6,19 +6,23 @@
 
         int currentIndex = 0;
 
-        public MockStream (T[] values)
+        public MockStream(T[] values)
         {
             this.values = values;
         }
 
         public T ReadNext()
         {
-            if (currentIndex >= values.Length)
-                currentIndex = 0;
-
-            T currentReading = values[currentIndex];
-            currentIndex++;
-            return currentReading;
+            if (currentIndex < values.Length)
+            {
+                T currentReading = values[currentIndex];
+                currentIndex++;
+                return currentReading;
+            }
+            else
+            {
+                return default(T);
+            }
         }
     }
 }

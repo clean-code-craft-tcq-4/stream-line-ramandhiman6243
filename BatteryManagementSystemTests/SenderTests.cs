@@ -29,12 +29,15 @@ namespace BatteryManagementSystemTests
             return sender;
         }
 
-        Readings GetMockReadings()
+        Readings GetMockReadings(int count)
         {
             Readings readings = new Readings();
-            for (int i = 0; i < mockFloatValues.Length; i++)
+            for (int i = 0; i < count; i++)
             {
-                readings.AddReading(mockFloatValues[i], mockIntValues[i]);
+                if (i < mockFloatValues.Length)
+                    readings.AddReading(mockFloatValues[i], mockIntValues[i]);
+                else
+                    readings.AddReading(0, 0);
             }
             return readings;
         }
@@ -43,7 +46,7 @@ namespace BatteryManagementSystemTests
         private void TestStringConversionOutput()
         {
             string actualReadings = GetSenderWithMockSensors().GenerateReadingsToString(4);
-            string expectedReadings = new JsonSerializer().Serialize(GetMockReadings());
+            string expectedReadings = new JsonSerializer().Serialize(GetMockReadings(4));
 
             Assert.Equal(expectedReadings, actualReadings);
         }
@@ -59,7 +62,16 @@ namespace BatteryManagementSystemTests
                 actualReadings = value;
             }
 
-            string expectedReadings = new JsonSerializer().Serialize(GetMockReadings());
+            string expectedReadings = new JsonSerializer().Serialize(GetMockReadings(4));
+
+            Assert.Equal(expectedReadings, actualReadings);
+        }
+
+        [Fact]
+        private void TestMockStreamOverflow()
+        {
+            string actualReadings = GetSenderWithMockSensors().GenerateReadingsToString(7);
+            string expectedReadings = new JsonSerializer().Serialize(GetMockReadings(7));
 
             Assert.Equal(expectedReadings, actualReadings);
         }

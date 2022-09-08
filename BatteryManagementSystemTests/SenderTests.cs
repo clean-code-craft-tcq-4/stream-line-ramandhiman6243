@@ -1,4 +1,4 @@
-﻿using BatteryManagementSystem;
+using BatteryManagementSystem;
 using Xunit;
 
 namespace BatteryManagementSystemTests
@@ -34,12 +34,17 @@ namespace BatteryManagementSystemTests
             Readings readings = new Readings();
             for (int i = 0; i < count; i++)
             {
-                if (i < mockFloatValues.Length)
-                    readings.AddReading(mockFloatValues[i], mockIntValues[i]);
-                else
-                    readings.AddReading(0, 0);
+                AddMockReading(readings, i);
             }
             return readings;
+        }
+
+        private void AddMockReading(Readings readings, int i)
+        {
+            if (i < mockFloatValues.Length)
+                readings.AddReading(mockFloatValues[i], mockIntValues[i]);
+            else
+                readings.AddReading(0, 0);
         }
 
         [Fact]

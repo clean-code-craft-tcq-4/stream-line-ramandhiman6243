@@ -5,52 +5,45 @@ namespace BatteryManagementSystemTests
 {
     public class SenderTests
     {
-        [Fact]
-        private void TestReadingsConversion()
+        public float[] mockFloatValues = new float[] { 10.3f, 20.54f, 100.54f, 30.32f };
+        public int[] mockIntValues = new int[] { 10, 20, 30, 40 };
+
+        Sensor<float> GetTemperatureSensor(float[] mockFloatValues)
         {
-            MockStream<float> floatStream = new MockStream<float>(new float[] { 10.3f, 20.54f, 100.54f, 30.32f });
+            MockStream<float> floatStream = new MockStream<float>(mockFloatValues);
             var temperatureSensor = new Sensor<float>(floatStream);
+            return temperatureSensor;
+        }
 
-            MockStream<int> intStream = new MockStream<int>(new int[] { 10, 20, 30, 40 });
+        Sensor<int> GetChargeRateSensor(int[] mockIntValues)
+        {
+            MockStream<int> intStream = new MockStream<int>(mockIntValues);
             var chargeRateSensor = new Sensor<int>(intStream);
+            return chargeRateSensor;
+        }
 
+        Sender GetSenderWithMockSensors()
+        {
             var serializer = new JsonSerializer();
+            Sender sender = new Sender(GetTemperatureSensor(mockFloatValues), GetChargeRateSensor(mockIntValues), new JsonSerializer());
+            return sender;
+        }
 
-            Sender sender = new Sender(temperatureSensor, chargeRateSensor, serializer);
-
-            Readings actualReadings = sender.GenerateReadings(4);
-
-            Readings expectedReadings = new Readings();
-            expectedReadings.AddReading(10.3f, 10);
-            expectedReadings.AddReading(20.54f, 20);
-            expectedReadings.AddReading(100.54f, 30);
-            expectedReadings.AddReading(30.32f, 40);
-
-            Assert.Equivalent(expectedReadings, actualReadings, true);
+        Readings GetMockReadings()
+        {
+            Readings readings = new Readings();
+            for (int i = 0; i < mockFloatValues.Length; i++)
+            {
+                readings.AddReading(mockFloatValues[i], mockIntValues[i]);
+            }
+            return readings;
         }
 
         [Fact]
         private void TestStringConversionOutput()
         {
-            MockStream<float> floatStream = new MockStream<float>(new float[] { 10.3f, 20.54f, 100.54f, 30.32f });
-            var temperatureSensor = new Sensor<float>(floatStream);
-
-            MockStream<int> intStream = new MockStream<int>(new int[] { 10, 20, 30, 40 });
-            var chargeRateSensor = new Sensor<int>(intStream);
-
-            var serializer = new JsonSerializer();
-
-            Sender sender = new Sender(temperatureSensor, chargeRateSensor, serializer);
-
-            string actualReadings = sender.GenerateReadingsToString(4);
-
-            Readings manualReadings = new Readings();
-            manualReadings.AddReading(10.3f, 10);
-            manualReadings.AddReading(20.54f, 20);
-            manualReadings.AddReading(100.54f, 30);
-            manualReadings.AddReading(30.32f, 40);
-
-            string expectedReadings = new JsonSerializer().Serialize(manualReadings);
+            string actualReadings = GetSenderWithMockSensors().GenerateReadingsToString(4);
+            string expectedReadings = new JsonSerializer().Serialize(GetMockReadings());
 
             Assert.Equal(expectedReadings, actualReadings);
         }
@@ -58,31 +51,15 @@ namespace BatteryManagementSystemTests
         [Fact]
         private void TestPrintOutput()
         {
-            MockStream<float> floatStream = new MockStream<float>(new float[] { 10.3f, 20.54f, 100.54f, 30.32f });
-            var temperatureSensor = new Sensor<float>(floatStream);
-
-            MockStream<int> intStream = new MockStream<int>(new int[] { 10, 20, 30, 40 });
-            var chargeRateSensor = new Sensor<int>(intStream);
-
-            var serializer = new JsonSerializer();
-
-            Sender sender = new Sender(temperatureSensor, chargeRateSensor, serializer);
-
             string actualReadings = string.Empty;
-            sender.PrintReadingsToConsole(4, Print);
+            GetSenderWithMockSensors().PrintReadingsToConsole(4, Print);
 
             void Print(string value)
             {
                 actualReadings = value;
             }
 
-            Readings manualReadings = new Readings();
-            manualReadings.AddReading(10.3f, 10);
-            manualReadings.AddReading(20.54f, 20);
-            manualReadings.AddReading(100.54f, 30);
-            manualReadings.AddReading(30.32f, 40);
-
-            string expectedReadings = new JsonSerializer().Serialize(manualReadings);
+            string expectedReadings = new JsonSerializer().Serialize(GetMockReadings());
 
             Assert.Equal(expectedReadings, actualReadings);
         }

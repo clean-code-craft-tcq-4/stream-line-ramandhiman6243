@@ -14,7 +14,7 @@ namespace BatteryManagementSystemTests
             for (int i = 0; i < 10; i++)
             {
                 int generatedValue = chargeRateSensor.Read();
-                Assert.True(generatedValue > 20);
+                Assert.True(generatedValue >= 20);
                 Assert.True(generatedValue <= 80);
             }
         }
@@ -37,7 +37,7 @@ namespace BatteryManagementSystemTests
         private void TestFixedValuesSensor()
         {
             var values = new int[] { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 };
-            Stream<int> stream = new Stream<int>(values);
+            MockStream<int> stream = new MockStream<int>(values);
             var chargeRateSensor = new Sensor<int>(stream);
 
             for (int i = 0; i < values.Length; i++)

@@ -1,4 +1,7 @@
-﻿namespace BatteryManagementSystem
+﻿using System;
+using System.Collections.Generic;
+
+namespace BatteryManagementSystem
 {
     public class Sender
     {
@@ -14,7 +17,7 @@
             this.serializer = serializer;
         }
 
-        public string GenerateOutput(int numberOfValues)
+        public Readings GenerateReadings(int numberOfValues)
         {
             Readings readings = new Readings();
 
@@ -23,7 +26,26 @@
                 AddNewReading(readings, ReadTemperatureSensor(), ReadChargeRateSensor());
             }
 
-            return Serialize(readings);
+            return readings;
+        }
+
+        public string ReadingsToString(Readings readings)
+        {
+            string serializedReadings = Serialize(readings);
+            return serializedReadings;
+        }
+
+        public string GenerateReadingsToString(int numbeOfValues)
+        {
+            var readings = GenerateReadings(numbeOfValues);
+            string output = ReadingsToString(readings);
+            return output;
+        }
+
+        public void PrintReadingsToConsole(int numberOfValues, Action<string> printFunction)
+        {
+            string stringOutput = GenerateReadingsToString(numberOfValues);
+            printFunction?.Invoke(stringOutput);
         }
 
         private float ReadTemperatureSensor()
@@ -41,7 +63,7 @@
             readings.AddReading(temperatureReading, chargeRateReading);
         }
 
-        public string Serialize(Readings readings)
+        private string Serialize(Readings readings)
         {
             string serializedValue = serializer.Serialize(readings);
             return serializedValue;

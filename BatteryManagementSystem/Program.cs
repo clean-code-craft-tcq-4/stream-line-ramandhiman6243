@@ -13,9 +13,7 @@ namespace BatteryManagementSystem
             var chargeRateSensor = new Sensor<int>(chargeRateStream);
 
             Sender sender = new Sender(temperatureSensor, chargeRateSensor,  new JsonSerializer());
-            string output = sender.GenerateOutput(50);
-
-            Console.WriteLine(output);
+            sender.PrintReadingsToConsole(50, Console.WriteLine);
         }
     }
 }

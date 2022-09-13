@@ -16,6 +16,7 @@ int main ()
 {
     std::string Sender_output = R"(temperature: 86.17, chargeRate: 71
 temperature: 5.85 , chargeRate: 74
+temperature: 28.12, chargeRate: 62
 temperature: 30.12, chargeRate: 61)";
     print(Sender_output, cout);
     ofstream filestream("filename.out");

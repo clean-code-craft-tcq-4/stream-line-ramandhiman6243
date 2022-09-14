@@ -6,11 +6,9 @@
 #include <ostream>
 #include <string>
 #include <fstream>
-#include "jsoncpp/json/json.h"
+#include "json/json.h"
 
 using namespace std;
-
-//#include "json/json.h"
 
 std::ifstream file_input("senderOutputExample.json");
 Json::Reader reader;

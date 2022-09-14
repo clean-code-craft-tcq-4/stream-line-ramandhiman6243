@@ -1,0 +1,23 @@
+  "readings": [
+    {
+      "temperature": 86.17,
+      "chargeRate": 71
+    },
+    {
+      "temperature": 5.85,
+      "chargeRate": 74
+    },
+    {
+      "temperature": 30.12,
+      "chargeRate": 61
+    },
+    {
+      "temperature": 83.48,
+      "chargeRate": 40
+    },
+    {
+      "temperature": 45.87,
+      "chargeRate": 28
+    }
+  ]
+}

@@ -5,22 +5,15 @@
 #include <streambuf>
 #include <ostream>
 #include <string>
+#include <fstream>
+#include <json/json.h>
+
 using namespace std;
 
-void print(const string str, ostream & output)
-{
-    output << str;
-}
+//#include "json/json.h"
 
-int main ()
-{
-    std::string Sender_output = R"(temperature: 86.17, chargeRate: 71
-temperature: 5.85 , chargeRate: 74
-temperature: 28.12, chargeRate: 62
-temperature: 30.12, chargeRate: 61)";
-    print(Sender_output, cout);
-    ofstream filestream("filename.out");
-    print(Sender_output, filestream);
-
-    return 0;
-}
+std::ifstream file_input("senderOutputExample.json");
+Json::Reader reader;
+Json::Value root;
+reader.parse(file_input, root);
+cout << root;

@@ -14,6 +14,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y gcovr
+        sudo apt-get install libjsoncpp-dev
 
     - name: build
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker Reciver.cpp

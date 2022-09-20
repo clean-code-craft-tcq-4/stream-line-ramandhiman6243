@@ -37,21 +37,19 @@ int main()
         }
     )";
 
-	Json::Value people;
-    std::ifstream people_file("senderOutputExample.json", std::ifstream::binary);
-    people_file >> people;
 
-    std::cout << people["readings"] << "\n";
-   	for (int i = 0; i < people.size(); i++) {
-        cout << "Temperature: " << people[i]["temperature"] << endl;
-        cout << "Charge Rate: " << people[i]["chargeRate"] << endl << endl;
-    }
+
+	std::ifstream file_input("senderOutputExample.json");
+	Json::Reader reader;
+	Json::Value root;
+	reader.parse(file_input, root);
+	cout << root;
 
 
 
-   Value root;
-   Reader reader;
-   reader.parse(inputString, root);
+//    Value root;
+//    Reader reader;
+//    reader.parse(inputString, root);
 
 
 

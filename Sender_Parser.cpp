@@ -18,10 +18,12 @@ int main()
 	Value readings = root["readings"];
 
 	for (int i = 0; i < readings.size(); i++) {
-		cout << "Temperature: " << readings[i]["temperature"] << endl;
-		cout << "Charge Rate: " << readings[i]["chargeRate"] << endl << endl;
-		Total_Readings[i].Temperature = (float)(readings[i]["temperature"]);
-		Total_Readings[i].Charge_Rate = (int)(readings[i]["chargeRate"]);
+		//cout << "Temperature: " << readings[i]["temperature"] << endl;
+		//cout << "Charge Rate: " << readings[i]["chargeRate"] << endl << endl;
+		Total_Readings[i].Temperature = readings[i]["temperature"].asFloat();
+		Total_Readings[i].Charge_Rate = readings[i]["chargeRate"].asInt();
+		cout << "Temperature: " << Total_Readings[i].Temperature << endl;
+		cout << "Charge Rate: " << Total_Readings[i].Charge_Rate << endl << endl;
 	}
 
 	return 0;

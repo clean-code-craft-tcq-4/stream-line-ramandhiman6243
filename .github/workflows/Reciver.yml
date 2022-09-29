@@ -17,7 +17,7 @@ jobs:
         sudo apt-get install libjsoncpp-dev
 
     - name: build
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker Receiver/Receiver.cpp -ljsoncpp
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker Receiver/Receiver.cpp -ljsoncpp Receiver/Receiver_Test_Cases_main.cpp
 
     - name: run
       run: ./testchecker

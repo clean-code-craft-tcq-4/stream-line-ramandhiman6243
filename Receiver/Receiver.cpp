@@ -61,9 +61,11 @@ int main(){
 
 	cout << "Maximum charge rate = " << MaxOfAttribute.MAX_CHARGE_RATE << endl;
 	cout << "Maximum Temperature = " << MaxOfAttribute.MAX_TEMP << endl;
+	cout << endl;
 
 	cout << "Minimum charge rate = " << MinOfAttribute.MIN_CHARGE_RATE << endl;
 	cout << "Minimum Temperature = " << MinOfAttribute.MIN_TEMP << endl;
+	cout << endl;
 
 	for (double x : Sampled_Reading.Temperature) {
 		SMA_Temperature.addData(x);

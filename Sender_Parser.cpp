@@ -25,19 +25,19 @@ void jsonparser(struct Reading &Total_Readings) {
 
 }
 
-void Get_Maximum(struct Reading temp_chargerate, int number_of_readings, Maximum &MaxOfAttribute) {
+// void Get_Maximum(struct Reading temp_chargerate, int number_of_readings, Maximum &MaxOfAttribute) {
 
-	MaxOfAttribute.MAX_TEMP = MAX_Reading(temp_chargerate.Temperature, number_of_readings);
-	MaxOfAttribute.MAX_CHARGE_RATE = MAX_Reading(temp_chargerate.Charge_Rate, number_of_readings);
+// 	MaxOfAttribute.MAX_TEMP = MAX_Reading(temp_chargerate.Temperature, number_of_readings);
+// 	MaxOfAttribute.MAX_CHARGE_RATE = MAX_Reading(temp_chargerate.Charge_Rate, number_of_readings);
 
-}
+// }
 
-void Get_Minimum(struct Reading temp_chargerate, int number_of_readings, Minimum &MinOfAttribute) {
+// void Get_Minimum(struct Reading temp_chargerate, int number_of_readings, Minimum &MinOfAttribute) {
 
-	MinOfAttribute.MIN_TEMP = MIN_Reading(temp_chargerate.Temperature, number_of_readings);
-	MinOfAttribute.MIN_CHARGE_RATE = MIN_Reading(temp_chargerate.Charge_Rate, number_of_readings);
+// 	MinOfAttribute.MIN_TEMP = MIN_Reading(temp_chargerate.Temperature, number_of_readings);
+// 	MinOfAttribute.MIN_CHARGE_RATE = MIN_Reading(temp_chargerate.Charge_Rate, number_of_readings);
 
-}
+// }
 
 int main(){
 

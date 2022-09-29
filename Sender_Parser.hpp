@@ -26,20 +26,20 @@ struct Minimum
 
 void jsonparser(struct Reading &Total_Readings);
 
-void Get_Maximum(struct Reading temp_chargerate, int number_of_readings, Maximum &MaxOfAttribute);
+// void Get_Maximum(struct Reading temp_chargerate, int number_of_readings, Maximum &MaxOfAttribute);
 
-void Get_Minimum(struct Reading temp_chargerate, int number_of_readings, Minimum &MinOfAttribute);
+// void Get_Minimum(struct Reading temp_chargerate, int number_of_readings, Minimum &MinOfAttribute);
 
-template <typename temp_chargerate>
-typename MAX_Reading(temp_chargerate arr[], int readings)
-{
-  return *max_element(arr, arr+readings);
-}
+// template <typename temp_chargerate>
+// typename MAX_Reading(temp_chargerate arr[], int readings)
+// {
+//   return *max_element(arr, arr+readings);
+// }
 
-template <typename temp_chargerate>
-typename MIN_Reading(temp_chargerate arr[], int readings)
-{
-  return *min_element(arr, arr+readings);
-}
+// template <typename temp_chargerate>
+// typename MIN_Reading(temp_chargerate arr[], int readings)
+// {
+//   return *min_element(arr, arr+readings);
+// }
 
 #endif

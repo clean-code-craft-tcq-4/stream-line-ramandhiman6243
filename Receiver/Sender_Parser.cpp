@@ -7,7 +7,7 @@ using namespace std;
 using namespace Json;
 
 
-void jsonparser(struct Reading &Total_Readings) {
+void jsonparser(struct Reading &Sample_Reading) {
 
 	std::ifstream file_input("senderOutputExample.json");
 	Json::Reader reader;
@@ -17,10 +17,8 @@ void jsonparser(struct Reading &Total_Readings) {
 	Value readings = root["readings"];
 
 	for (int i = 0; i < readings.size(); i++) {
-		Total_Readings.Temperature[i] = readings[i]["temperature"].asFloat();
-		Total_Readings.Charge_Rate[i] = readings[i]["chargeRate"].asInt();
-		cout << "Temperature: " << Total_Readings.Temperature[i] << endl;
-		cout << "Charge_Rate: " << Total_Readings.Charge_Rate[i] << endl;
+		Sample_Reading.Temperature[i] = readings[i]["temperature"].asFloat();
+		Sample_Reading.Charge_Rate[i] = readings[i]["chargeRate"].asInt();
 	}
 
 }
@@ -51,18 +49,19 @@ void Get_Minimum(struct Reading temp_chargerate, Minimum &MinOfAttribute) {
 
 int main(){
 
-	Reading Total_Readings;
+	Reading Sample_Reading;
 	Maximum MaxOfAttribute;
 	Minimum MinOfAttribute;
-	jsonparser(Total_Readings);
-	Get_Maximum(Total_Readings, MaxOfAttribute);
-	Get_Minimum(Total_Readings, MinOfAttribute);
 
-	cout << "max.charge = " << MaxOfAttribute.MAX_CHARGE_RATE << endl;
-	cout << "max.TEMP = " << MaxOfAttribute.MAX_TEMP << endl;
+	jsonparser(Sample_Reading);
+	Get_Maximum(Sample_Reading, MaxOfAttribute);
+	Get_Minimum(Sample_Reading, MinOfAttribute);
 
-	cout << "min.charge = " << MinOfAttribute.MIN_CHARGE_RATE << endl;
-	cout << "min.TEMP = " << MinOfAttribute.MIN_TEMP << endl;
+	cout << "Maximum charge rate = " << MaxOfAttribute.MAX_CHARGE_RATE << endl;
+	cout << "Maximum Temperature = " << MaxOfAttribute.MAX_TEMP << endl;
+
+	cout << "Minimum charge rate = " << MinOfAttribute.MIN_CHARGE_RATE << endl;
+	cout << "Minimum Temperature = " << MinOfAttribute.MIN_TEMP << endl;
 
 }
 

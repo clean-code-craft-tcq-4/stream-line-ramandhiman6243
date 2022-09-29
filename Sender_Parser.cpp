@@ -28,8 +28,8 @@ void jsonparser(struct Reading &Total_Readings) {
 
 void Get_Maximum(struct Reading temp_chargerate, int number_of_readings, Maximum &MaxOfAttribute) {
 
-	MaxOfAttribute.MAX_TEMP = MAX_Reading(temp_chargerate.Temperature, number_of_readings);
-	MaxOfAttribute.MAX_CHARGE_RATE = MAX_Reading(temp_chargerate.Charge_Rate, number_of_readings);
+	MaxOfAttribute.MAX_TEMP = <float>MAX_Reading(temp_chargerate.Temperature, number_of_readings);
+	MaxOfAttribute.MAX_CHARGE_RATE = <int>MAX_Reading(temp_chargerate.Charge_Rate, number_of_readings);
 
 }
 

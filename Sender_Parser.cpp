@@ -25,19 +25,29 @@ void jsonparser(struct Reading &Total_Readings) {
 
 }
 
-// void Get_Maximum(struct Reading temp_chargerate, int number_of_readings, Maximum &MaxOfAttribute) {
+void Sorting(struct Reading &temp_chargerate)
+{
+	sort(temp_chargerate.Temperature, temp_chargerate.Temperature + G_TOTAL_READINGS, greater<int>());
+	sort(temp_chargerate.Charge_Rate, temp_chargerate.Charge_Rate + G_TOTAL_READINGS, greater<int>());
+}
 
-// 	MaxOfAttribute.MAX_TEMP = MAX_Reading(temp_chargerate.Temperature, number_of_readings);
-// 	MaxOfAttribute.MAX_CHARGE_RATE = MAX_Reading(temp_chargerate.Charge_Rate, number_of_readings);
+void Get_Maximum(struct Reading temp_chargerate, Maximum &MaxOfAttribute){
 
-// }
+	Sorting(temp_chargerate);
 
-// void Get_Minimum(struct Reading temp_chargerate, int number_of_readings, Minimum &MinOfAttribute) {
+	MaxOfAttribute.MAX_TEMP = temp_chargerate.Temperature[0];
+	MaxOfAttribute.MAX_CHARGE_RATE = temp_chargerate.Charge_Rate[0];
+}
 
-// 	MinOfAttribute.MIN_TEMP = MIN_Reading(temp_chargerate.Temperature, number_of_readings);
-// 	MinOfAttribute.MIN_CHARGE_RATE = MIN_Reading(temp_chargerate.Charge_Rate, number_of_readings);
 
-// }
+void Get_Minimum(struct Reading temp_chargerate, Minimum &MinOfAttribute) {
+
+	Sorting(temp_chargerate);
+
+	MinOfAttribute.MIN_TEMP = temp_chargerate.Temperature[G_TOTAL_READINGS - 1];
+	MinOfAttribute.MIN_CHARGE_RATE = temp_chargerate.Charge_Rate[G_TOTAL_READINGS - 1];
+
+}
 
 int main(){
 
@@ -45,15 +55,11 @@ int main(){
 	Maximum MaxOfAttribute;
 	Minimum MinOfAttribute;
 	jsonparser(Total_Readings);
-	sort(Total_Readings.Temperature, Total_Readings.Temperature + G_TOTAL_READINGS, greater<int>());
-	cout << "Array after sorting : \n";
-    for (int i = 0; i < G_TOTAL_READINGS; ++i)
-        cout << Total_Readings.Temperature[i] << " ";
-	//Get_Maximum(Total_Readings, G_TOTAL_READINGS, MaxOfAttribute);
-	//Get_Minimum(Total_Readings, G_TOTAL_READINGS, MinOfAttribute);
+	Get_Maximum(Total_Readings, MaxOfAttribute);
+	Get_Minimum(Total_Readings, MinOfAttribute);
 
-	//cout << "max.charge" << MaxOfAttribute.MAX_CHARGE_RATE;
-	//cout << "max.TEMP" << MaxOfAttribute.MAX_TEMP;
+	cout << "max.charge" << MaxOfAttribute.MAX_CHARGE_RATE;
+	cout << "max.TEMP" << MaxOfAttribute.MAX_TEMP;
 
 }
 

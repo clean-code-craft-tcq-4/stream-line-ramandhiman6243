@@ -13,4 +13,4 @@ jobs:
       run: pip install lizard
 
     - name: Limit complexity
-      run: $HOME/.local/bin/lizard --CCN 2 --exclude './json/*'
+      run: $HOME/.local/bin/lizard --CCN 2 --exclude './Receiver/json/*'

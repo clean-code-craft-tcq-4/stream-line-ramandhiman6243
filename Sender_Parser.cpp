@@ -58,8 +58,11 @@ int main(){
 	Get_Maximum(Total_Readings, MaxOfAttribute);
 	Get_Minimum(Total_Readings, MinOfAttribute);
 
-	cout << "max.charge" << MaxOfAttribute.MAX_CHARGE_RATE;
-	cout << "max.TEMP" << MaxOfAttribute.MAX_TEMP;
+	cout << "max.charge = " << MaxOfAttribute.MAX_CHARGE_RATE << endl;
+	cout << "max.TEMP = " << MaxOfAttribute.MAX_TEMP << endl;
+
+	cout << "min.charge = " << MinOfAttribute.MIN_CHARGE_RATE << endl;
+	cout << "min.TEMP = " << MinOfAttribute.MIN_TEMP << endl;
 
 }
 

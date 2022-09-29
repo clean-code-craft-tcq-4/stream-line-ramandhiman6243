@@ -2,7 +2,6 @@
 #include "json/json.h"
 #include <fstream>
 #include "Sender_Parser.hpp"
-#include "bits/bits-stdc++.h"
 
 using namespace std;
 using namespace Json;
@@ -28,8 +27,8 @@ void jsonparser(struct Reading &Total_Readings) {
 
 void Get_Maximum(struct Reading temp_chargerate, int number_of_readings, Maximum &MaxOfAttribute) {
 
-	MaxOfAttribute.MAX_TEMP = <float>MAX_Reading(temp_chargerate.Temperature, number_of_readings);
-	MaxOfAttribute.MAX_CHARGE_RATE = <int>MAX_Reading(temp_chargerate.Charge_Rate, number_of_readings);
+	MaxOfAttribute.MAX_TEMP = MAX_Reading(temp_chargerate.Temperature, number_of_readings);
+	MaxOfAttribute.MAX_CHARGE_RATE = MAX_Reading(temp_chargerate.Charge_Rate, number_of_readings);
 
 }
 
@@ -46,11 +45,15 @@ int main(){
 	Maximum MaxOfAttribute;
 	Minimum MinOfAttribute;
 	jsonparser(Total_Readings);
-	Get_Maximum(Total_Readings, G_TOTAL_READINGS, MaxOfAttribute);
-	Get_Minimum(Total_Readings, G_TOTAL_READINGS, MinOfAttribute);
+	sort(Total_Readings.Temperature, Total_Readings.Temperature + G_TOTAL_READINGS, greater<int>());
+	cout << "Array after sorting : \n";
+    for (int i = 0; i < G_TOTAL_READINGS; ++i)
+        cout << Total_Readings.Temperature[i] << " ";
+	//Get_Maximum(Total_Readings, G_TOTAL_READINGS, MaxOfAttribute);
+	//Get_Minimum(Total_Readings, G_TOTAL_READINGS, MinOfAttribute);
 
-	cout << "max.charge" << MaxOfAttribute.MAX_CHARGE_RATE;
-	cout << "max.TEMP" << MaxOfAttribute.MAX_TEMP;
+	//cout << "max.charge" << MaxOfAttribute.MAX_CHARGE_RATE;
+	//cout << "max.TEMP" << MaxOfAttribute.MAX_TEMP;
 
 }
 

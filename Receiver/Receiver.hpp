@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int G_TOTAL_READINGS = 5;
+const int G_TOTAL_READINGS = 10;
 const int G_LastnReadings = 5;
 
 struct Reading

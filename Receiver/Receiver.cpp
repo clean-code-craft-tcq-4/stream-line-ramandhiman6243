@@ -33,6 +33,10 @@ void Get_Maximum(struct Reading temp_chargerate, Maximum &MaxOfAttribute){
 
 	Sorting(temp_chargerate);
 
+	for (int i = 0; i < G_TOTAL_READINGS; i++) {
+		cout << temp_chargerate.Temperature[i] << endl;
+	}
+
 	MaxOfAttribute.MAX_TEMP = temp_chargerate.Temperature[0];
 	MaxOfAttribute.MAX_CHARGE_RATE = temp_chargerate.Charge_Rate[0];
 }

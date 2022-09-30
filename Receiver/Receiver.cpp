@@ -47,34 +47,34 @@ void Get_Minimum(struct Reading temp_chargerate, Minimum &MinOfAttribute) {
 
 }
 
-int main(){
+// int main(){
 
-	Reading Sampled_Reading;
-	Maximum MaxOfAttribute;
-	Minimum MinOfAttribute;
-	SimpleMovingAverage SMA_Temperature(G_LastnReadings);
-	SimpleMovingAverage SMA_ChargeRate(G_LastnReadings);
+// 	Reading Sampled_Reading;
+// 	Maximum MaxOfAttribute;
+// 	Minimum MinOfAttribute;
+// 	SimpleMovingAverage SMA_Temperature(G_LastnReadings);
+// 	SimpleMovingAverage SMA_ChargeRate(G_LastnReadings);
 
-	jsonparser(Sampled_Reading);
-	Get_Maximum(Sampled_Reading, MaxOfAttribute);
-	Get_Minimum(Sampled_Reading, MinOfAttribute);
+// 	jsonparser(Sampled_Reading);
+// 	Get_Maximum(Sampled_Reading, MaxOfAttribute);
+// 	Get_Minimum(Sampled_Reading, MinOfAttribute);
 
-	cout << "Maximum charge rate = " << MaxOfAttribute.MAX_CHARGE_RATE << endl;
-	cout << "Maximum Temperature = " << MaxOfAttribute.MAX_TEMP << endl;
-	cout << endl;
+// 	cout << "Maximum charge rate = " << MaxOfAttribute.MAX_CHARGE_RATE << endl;
+// 	cout << "Maximum Temperature = " << MaxOfAttribute.MAX_TEMP << endl;
+// 	cout << endl;
 
-	cout << "Minimum charge rate = " << MinOfAttribute.MIN_CHARGE_RATE << endl;
-	cout << "Minimum Temperature = " << MinOfAttribute.MIN_TEMP << endl;
-	cout << endl;
+// 	cout << "Minimum charge rate = " << MinOfAttribute.MIN_CHARGE_RATE << endl;
+// 	cout << "Minimum Temperature = " << MinOfAttribute.MIN_TEMP << endl;
+// 	cout << endl;
 
-	for (double x : Sampled_Reading.Temperature) {
-		SMA_Temperature.addData(x);
-		cout << "New number added is " << x << ", Simple Moving Average of temperature reading = " << SMA_Temperature.getMean() << endl; }
+// 	for (double x : Sampled_Reading.Temperature) {
+// 		SMA_Temperature.addData(x);
+// 		cout << "New number added is " << x << ", Simple Moving Average of temperature reading = " << SMA_Temperature.getMean() << endl; }
 
-	cout << endl;
+// 	cout << endl;
 
-	for (double x : Sampled_Reading.Charge_Rate) {
-		SMA_ChargeRate.addData(x);
-		cout << "New number added is " << x << ", Simple Moving Average of charge rate reading = " << SMA_ChargeRate.getMean() << endl; }
+// 	for (double x : Sampled_Reading.Charge_Rate) {
+// 		SMA_ChargeRate.addData(x);
+// 		cout << "New number added is " << x << ", Simple Moving Average of charge rate reading = " << SMA_ChargeRate.getMean() << endl; }
 
-}
+// }

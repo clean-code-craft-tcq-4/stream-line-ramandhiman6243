@@ -25,7 +25,7 @@ void jsonparser(struct Reading &Sampled_Reading) {
 
 void Sorting(struct Reading &temp_chargerate)
 {
-	sort(temp_chargerate.Temperature, temp_chargerate.Temperature + G_TOTAL_READINGS, greater<int>());
+	sort(temp_chargerate.Temperature, temp_chargerate.Temperature + G_TOTAL_READINGS, greater<float>());
 	sort(temp_chargerate.Charge_Rate, temp_chargerate.Charge_Rate + G_TOTAL_READINGS, greater<int>());
 }
 

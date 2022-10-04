@@ -26,5 +26,5 @@ TEST_CASE("POSITIVE TEST CASE 1 - Maximum Charge Rate/Temperature ") {
 	cout << endl;
 
     REQUIRE(MaxOfAttribute.MAX_CHARGE_RATE == 99);
-    REQUIRE(MaxOfAttribute.MAX_TEMP == 9.9);
+    REQUIRE(MaxOfAttribute.MAX_TEMP == 9.9f);
 }

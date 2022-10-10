@@ -53,8 +53,8 @@ TEST_CASE("Minimum Charge Rate/Temperature ") {
     REQUIRE(MinOfAttribute.MIN_TEMP == 0.1f);
 }
 
-// Simple Moving Average
-TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature ") {
+// Simple Moving Average scenerio 1
+TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature in 5 readings ") {
 
     SimpleMovingAverage SMA_Temperature(G_LastnReadings);
  	SimpleMovingAverage SMA_ChargeRate(G_LastnReadings);
@@ -76,6 +76,32 @@ TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature ") {
     charge_rate_average = SMA_ChargeRate.getMean();
     REQUIRE(charge_rate_average == 7.6f);
 }
+
+
+// Simple Moving Average scenerio 2
+TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature in 6 readings ") {
+
+    SimpleMovingAverage SMA_Temperature(G_LastnReadings);
+ 	SimpleMovingAverage SMA_ChargeRate(G_LastnReadings);
+
+    for (int i = 0; i < 6; i++) {
+        SMA_Temperature.addData(Sampled_Temperature[i]);
+        SMA_ChargeRate.addData(Sampled_Charge_Rate[i]);
+    }
+
+    float temp_average, charge_rate_average;
+
+ 	cout << "Simple Moving Average of temperature reading = " << SMA_Temperature.getMean() << endl;
+    temp_average = SMA_Temperature.getMean();
+    REQUIRE(temp_average == 3.96f);
+
+ 	cout << endl;
+
+	cout << "Simple Moving Average of charge rate reading = " << SMA_ChargeRate.getMean() << endl;
+    charge_rate_average = SMA_ChargeRate.getMean();
+    REQUIRE(charge_rate_average == 7.6f);
+}
+
 
 // JSON Parser
 TEST_CASE("json parsing ") {

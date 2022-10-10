@@ -52,7 +52,7 @@ TEST_CASE("Minimum Charge Rate/Temperature ") {
 
 // Simple Moving Average
 TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature ") {
-    
+
     SimpleMovingAverage SMA_Temperature(G_LastnReadings);
  	SimpleMovingAverage SMA_ChargeRate(G_LastnReadings);
     Reading Sampled_Reading;
@@ -63,15 +63,14 @@ TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature ") {
     }
 
  	for (double SMA_of_Temperature : Sampled_Reading.Temperature) {
-		SMA_Temperature.addData(SMA_of_Temperature);
+		SMA_Temperature.addData(SMA_of_Temperature); }
  	cout << "Simple Moving Average of temperature reading = " << SMA_Temperature.getMean() << endl;
     REQUIRE(SMA_Temperature.getMean() == 3.96f);
 
  	cout << endl;
 
  	for (double SMA_of_ChargeRate : Sampled_Reading.Charge_Rate) {
- 		SMA_ChargeRate.addData(SMA_of_ChargeRate);
-	cout << "Simple Moving Average of charge rate reading = " << SMA_ChargeRate.getMean() << endl; }
-        REQUIRE(SMA_ChargeRate.getMean() == 7.6f);
-
+ 		SMA_ChargeRate.addData(SMA_of_ChargeRate); }
+	cout << "Simple Moving Average of charge rate reading = " << SMA_ChargeRate.getMean() << endl;
+    REQUIRE(SMA_ChargeRate.getMean() == 7.6f);
 }

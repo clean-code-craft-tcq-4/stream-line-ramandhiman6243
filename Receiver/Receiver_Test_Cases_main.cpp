@@ -85,10 +85,10 @@ TEST_CASE("json parsing ") {
 
     // Random Temeprature reading check
     REQUIRE(Sampled_Reading.Temperature[0] == 69.77f);
-    REQUIRE(Sampled_Reading.Temperature[0] == 69.31f);
+    REQUIRE(Sampled_Reading.Temperature[5] == 69.31f);
 
     // Random Charge rate reading check
     REQUIRE(Sampled_Reading.Charge_Rate[0] == 65);
-    REQUIRE(Sampled_Reading.Charge_Rate[0] == 37);
+    REQUIRE(Sampled_Reading.Charge_Rate[5] == 37);
 
 }

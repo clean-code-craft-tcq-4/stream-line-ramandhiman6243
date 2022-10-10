@@ -57,7 +57,7 @@ TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature ") {
  	SimpleMovingAverage SMA_ChargeRate(G_LastnReadings);
     Reading Sampled_Reading;
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         Sampled_Reading.Charge_Rate[i] = Sampled_Charge_Rate[i];
         Sampled_Reading.Temperature[i] = Sampled_Temperature[i];
     }

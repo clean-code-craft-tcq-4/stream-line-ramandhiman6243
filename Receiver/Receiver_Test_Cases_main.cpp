@@ -3,6 +3,9 @@
 #include "test/catch.hpp"
 #include <iostream>
 #include "Receiver.hpp"
+#include "json/json.h"
+
+using namespace Json;
 using namespace std;
 
 int Sampled_Charge_Rate[] = { 4, 5, 8, 9, 12, 15, 91, 19, 99, 0 };
@@ -72,4 +75,20 @@ TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature ") {
 	cout << "Simple Moving Average of charge rate reading = " << SMA_ChargeRate.getMean() << endl;
     charge_rate_average = SMA_ChargeRate.getMean();
     REQUIRE(charge_rate_average == 7.6f);
+}
+
+// JSON Parser
+TEST_CASE("json parsing ") {
+
+    Reading Sampled_Reading;
+ 	jsonparser(Sampled_Reading);
+
+    // Random Temeprature reading check
+    REQUIRE(Sampled_Reading.Temperature[0] == 69.77f);
+    REQUIRE(Sampled_Reading.Temperature[0] == 69.31f);
+
+    // Random Charge rate reading check
+    REQUIRE(Sampled_Reading.Charge_Rate[0] == 65);
+    REQUIRE(Sampled_Reading.Charge_Rate[0] == 37);
+
 }

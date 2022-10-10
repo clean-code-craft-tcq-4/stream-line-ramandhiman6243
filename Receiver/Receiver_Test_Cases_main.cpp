@@ -93,13 +93,13 @@ TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature in 6
 
  	cout << "Simple Moving Average of temperature reading = " << SMA_Temperature.getMean() << endl;
     temp_average = SMA_Temperature.getMean();
-    REQUIRE(temp_average == 3.96f);
+    REQUIRE(temp_average == 3.38f);
 
  	cout << endl;
 
 	cout << "Simple Moving Average of charge rate reading = " << SMA_ChargeRate.getMean() << endl;
     charge_rate_average = SMA_ChargeRate.getMean();
-    REQUIRE(charge_rate_average == 7.6f);
+    REQUIRE(charge_rate_average == 9.8f);
 }
 
 

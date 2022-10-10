@@ -62,7 +62,7 @@ TEST_CASE("Simple Moving Average of latest 5 values Charge Rate/Temperature ") {
     }
 
  	cout << "Simple Moving Average of temperature reading = " << SMA_Temperature.getMean() << endl;
-    REQUIRE(SMA_Temperature.getMean() == 3.96f);
+    REQUIRE(ceil(SMA_Temperature.getMean() * 100.0) / 100.0 == 3.96f);
 
  	cout << endl;
 

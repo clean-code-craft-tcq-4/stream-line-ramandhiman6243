@@ -14,4 +14,4 @@ jobs:
       run: sudo npm install -g jscpd
 
     - name: Check duplications
-      run: jscpd . --min-lines  --min-tokens 48 --threshold 0 --ignore /Receiver/Receiver_Test_Cases_main.cpp
+      run: jscpd . --min-lines 9 --min-tokens 85 --threshold 0

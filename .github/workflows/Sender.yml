@@ -27,7 +27,7 @@ jobs:
         
     # Run the app
     - name: Run the App
-      run: dotnet run -p Sender\BatteryManagementSystem
+      run: dotnet run -p BatteryManagementSystem
 
     - name: Run tests and collect coverage
       run: dotnet test --collect:"XPlat Code Coverage"

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BatteryManagementSystem", "BatteryManagementSystem\BatteryManagementSystem.csproj", "{2F6C0379-CA39-47F2-92EB-EADE96AABDA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BatteryManagementSystem", "Sender\BatteryManagementSystem\BatteryManagementSystem.csproj", "{2F6C0379-CA39-47F2-92EB-EADE96AABDA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryManagementSystemTests", "BatteryManagementSystemTests\BatteryManagementSystemTests.csproj", "{825A86AC-3288-4EFC-92E7-B6A1F19E45CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BatteryManagementSystemTests", "Sender\BatteryManagementSystemTests\BatteryManagementSystemTests.csproj", "{825A86AC-3288-4EFC-92E7-B6A1F19E45CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
